@@ -16,4 +16,6 @@ To open Options, **right-click** on the **SiteBlock** icon in the toolbar and ch
 
 The extension should be installed now.
 
+---
+
 <img src="./assets/banner.png" width="100%">
