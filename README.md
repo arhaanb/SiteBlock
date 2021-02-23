@@ -18,4 +18,4 @@ The extension should be installed now.
 
 ---
 
-<img src="./assets/banner.png" width="100%">
+<img src="./assets/next.png" width="100%">
