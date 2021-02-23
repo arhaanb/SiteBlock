@@ -1,0 +1,117 @@
+.title {
+	font-weight: 700;
+	margin-top: 0.45em;
+	margin-left: 0.2em;
+}
+
+.med {
+	font-weight: 600;
+}
+
+a {
+	color: #69e;
+	text-decoration: none;
+	padding: 0.1em 0;
+	border-bottom: solid transparent 1px;
+	transition: 0.2s;
+}
+
+a:hover {
+	border-bottom: solid #69e 1px;
+	color: #69e;
+}
+
+.noselect, .removeBtn, br, img, button {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+::selection {
+	color: rgb(21, 80, 182);
+	background: rgba(36, 109, 236, 0.116);
+}
+
+input, textarea {
+	min-width: 100%;
+	max-width: 100%;
+}
+
+button, input, textarea, select, option {
+	font-family: Inter, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.btn-flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+@media (max-width: 750px) {
+	.btn-flex {
+		flex-direction: column;
+	}
+	#save2 {
+		margin: 0;
+	}
+}
+
+#checkbox {
+	display: none;
+}
+
+.site {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.75em;
+	font-size: 1em;
+	background-color: rgba(213, 229, 255, 0.171);
+	padding: 0.4em 0.75em;
+	border-radius: 0.5em;
+}
+
+.removeBtn {
+	width: 0.8em;
+	padding: 0.4em;
+	border-radius: 0.5em;
+	transition: 0.2s;
+}
+
+.removeBtn:hover {
+	background-color: rgb(255, 200, 200);
+	cursor: pointer;
+}
+
+#load {
+	display: none;
+}
+
+#load.ready {
+	display: block;
+}
+
+p {
+	opacity: 85%;
+}
+
+#web {
+	margin-bottom: 2em;
+}
+
+.logo {
+	width: 5em;
+}
+
+.flex {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 1em 0;
+}
+
+.made {
+	margin-bottom: 0.25em;
+}

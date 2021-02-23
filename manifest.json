@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "SiteBlock",
+  "description": "A simple site blocker.",
+  "version": "1.0",
+  "icons": { "128": "./assets/icon.png" },
+  "options_page": "options.html",
+  "permissions": ["storage", "tabs"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
