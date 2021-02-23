@@ -10,6 +10,10 @@ chrome.runtime.onInstalled.addListener(function () {
   })
 })
 
+function myFunction(item, index) {
+  document.getElementById('demo').innerHTML += index + ':' + item + '<br>'
+}
+
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
   const url = changeInfo.pendingUrl || changeInfo.url
   if (!url || !url.startsWith('http')) {
@@ -20,14 +24,13 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
 
   chrome.storage.local.get(['blocked', 'enabled'], function (local) {
     const { blocked, enabled } = local
-    if (
-      Array.isArray(blocked) &&
-      enabled &&
-      blocked.find((domain) => {
-        hostname.includes(domain)
+
+    if (blocked !== []) {
+      blocked.forEach((site) => {
+        if (hostname.includes(site)) {
+          chrome.tabs.remove(tabId)
+        }
       })
-    ) {
-      chrome.tabs.remove(tabId)
     }
   })
 })
