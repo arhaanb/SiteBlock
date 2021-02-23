@@ -37,8 +37,8 @@ function trailingSlash(site) {
     var n = site.search('/')
     return site.slice(0, n)
   } else {
-		return site
-	}
+    return site
+  }
 }
 
 function removeSite(site) {
@@ -66,9 +66,17 @@ function checkURL(site) {
 function convertURL(site) {
   var web = site.toLowerCase()
   if (web.slice(0, 8) === 'https://') {
+    if (web.slice(0, 12) === 'https://www.') {
+      return web.slice(12)
+    }
     return web.slice(8)
   } else if (web.slice(0, 7) === 'http://') {
+    if (web.slice(0, 11) === 'http://www.') {
+      return web.slice(11)
+    }
     return web.slice(7)
+  } else if (web.slice(0, 4) === 'www.') {
+    return web.slice(4)
   } else {
     return web
   }
