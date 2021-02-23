@@ -32,6 +32,15 @@ function removeA(arr) {
   return arr
 }
 
+function trailingSlash(site) {
+  if (site.includes('/')) {
+    var n = site.search('/')
+    return site.slice(0, n)
+  } else {
+		return site
+	}
+}
+
 function removeSite(site) {
   chrome.storage.local.get(['blocked'], function (local) {
     const { blocked } = local
@@ -48,19 +57,20 @@ function checkURL(site) {
   var regex = new RegExp(expression)
 
   if (site.toLowerCase().match(regex)) {
-    return site.toLowerCase()
+    return site
   } else {
     return false
   }
 }
 
 function convertURL(site) {
-  if (site.slice(0, 8).toLowerCase() === 'https://') {
-    return site.slice(8).toLowerCase()
-  } else if (site.slice(0, 7).toLowerCase() === 'http://') {
-    return site.slice(7).toLowerCase()
+  var web = site.toLowerCase()
+  if (web.slice(0, 8) === 'https://') {
+    return web.slice(8)
+  } else if (web.slice(0, 7) === 'http://') {
+    return web.slice(7)
   } else {
-    return site.toLowerCase()
+    return web
   }
 }
 
@@ -69,15 +79,17 @@ web.addEventListener('keypress', function (e) {
     newSites = local.blocked
     if (e.key === 'Enter') {
       if (web.value.trim() !== '') {
-        if (newSites.indexOf(web.value) === -1) {
-          if (checkURL(web.value) !== false) {
-            newSites.push(convertURL(web.value))
+        if (checkURL(web.value) !== false) {
+          var convertedUrl = convertURL(web.value)
+          var finalURL = trailingSlash(convertedUrl)
+          if (newSites.indexOf(finalURL) == -1) {
+            newSites.push(finalURL)
             local.blocked = newSites
             chrome.storage.local.set({ blocked: newSites })
             refreshList(local.blocked)
-          } else {
-            alert('Enter a valid URL.')
           }
+        } else {
+          alert('Enter a valid URL.')
         }
         web.value = ''
         activateRemoveListeners()

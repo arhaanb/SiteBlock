@@ -23,7 +23,9 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
     if (
       Array.isArray(blocked) &&
       enabled &&
-      blocked.find((domain) => hostname.includes(domain || `${domain}/`))
+      blocked.find((domain) => {
+        hostname.includes(domain)
+      })
     ) {
       chrome.tabs.remove(tabId)
     }
