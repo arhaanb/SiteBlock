@@ -10,7 +10,7 @@ To open Options, **right-click** on the **SiteBlock** icon in the toolbar and ch
 
 - Go to Chrome Settings using three dots on the top right corner.
 - Then select extensions.
-- You may directly open extensions using chrome://extensions
+- You may directly open extensions using [`chrome://extensions`](chrome://extensions)
 - Enable developer mode
 - Click on Load Unpacked and select your Unzip folder.
 
