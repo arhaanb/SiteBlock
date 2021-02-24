@@ -10,6 +10,25 @@ chrome.runtime.onInstalled.addListener(function () {
   })
 })
 
+function convertURL(site) {
+  var web = site.toLowerCase()
+  if (web.slice(0, 8) === 'https://') {
+    if (web.slice(0, 12) === 'https://www.') {
+      return web.slice(12)
+    }
+    return web.slice(8)
+  } else if (web.slice(0, 7) === 'http://') {
+    if (web.slice(0, 11) === 'http://www.') {
+      return web.slice(11)
+    }
+    return web.slice(7)
+  } else if (web.slice(0, 4) === 'www.') {
+    return web.slice(4)
+  } else {
+    return web
+  }
+}
+
 function myFunction(item, index) {
   document.getElementById('demo').innerHTML += index + ':' + item + '<br>'
 }
@@ -27,7 +46,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
 
     if (blocked !== []) {
       blocked.forEach((site) => {
-        if (hostname.includes(site)) {
+        // if (hostname.includes(site)) {
+        //   chrome.tabs.remove(tabId)
+        // }
+        if (convertURL(hostname) == site) {
           chrome.tabs.remove(tabId)
         }
       })
