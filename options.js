@@ -90,7 +90,19 @@ web.addEventListener('keypress', function (e) {
         if (checkURL(web.value) !== false) {
           var convertedUrl = convertURL(web.value)
           var finalURL = trailingSlash(convertedUrl)
-          if (newSites.indexOf(finalURL) == -1) {
+          if (
+            finalURL.slice(0, 2) == '*.' &&
+            newSites.indexOf(finalURL.slice(2)) !== -1
+          ) {
+            removeA(newSites, finalURL.slice(2))
+            newSites.push(finalURL)
+            local.blocked = newSites
+            chrome.storage.local.set({ blocked: newSites })
+            refreshList(local.blocked)
+          } else if (
+            newSites.indexOf(`*.${finalURL}`) == -1 &&
+            newSites.indexOf(`${finalURL}`) == -1
+          ) {
             newSites.push(finalURL)
             local.blocked = newSites
             chrome.storage.local.set({ blocked: newSites })

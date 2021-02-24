@@ -49,15 +49,6 @@ button, input, textarea, select, option {
 	justify-content: space-between;
 }
 
-@media (max-width: 750px) {
-	.btn-flex {
-		flex-direction: column;
-	}
-	#save2 {
-		margin: 0;
-	}
-}
-
 #checkbox {
 	display: none;
 }
@@ -114,4 +105,14 @@ p {
 
 .made {
 	margin-bottom: 0.25em;
+}
+
+@media (max-width: 750px) {
+	.flex {
+		justify-content: center;
+		flex-direction: column;
+	}
+	.logo {
+		margin-bottom: -1em;
+	}
 }

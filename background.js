@@ -40,6 +40,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
   }
 
   const hostname = new URL(url).hostname
+  var host = convertURL(hostname)
 
   chrome.storage.local.get(['blocked', 'enabled'], function (local) {
     const { blocked, enabled } = local
@@ -49,8 +50,18 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
         // if (hostname.includes(site)) {
         //   chrome.tabs.remove(tabId)
         // }
-        if (convertURL(hostname) == site) {
-          chrome.tabs.remove(tabId)
+        if (site.slice(0, 2) == '*.') {
+          if (site.slice(2) == host) {
+            chrome.tabs.remove(tabId)
+          } else if (
+            site.slice(1) == host.slice(parseInt(`-${site.slice(1).length}`))
+          ) {
+            chrome.tabs.remove(tabId)
+          }
+        } else {
+          if (host == site) {
+            chrome.tabs.remove(tabId)
+          }
         }
       })
     }
