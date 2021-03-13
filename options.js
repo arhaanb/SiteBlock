@@ -1,6 +1,7 @@
 const save = document.getElementById('save')
 const web = document.getElementById('web')
 const removebtn = document.getElementsByClassName('removeBtn')
+const webinput = document.getElementById('web')
 
 function refreshList(blocked) {
   var text = ''
@@ -129,6 +130,18 @@ function activateRemoveListeners() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  document.onkeydown = keydown
+
+  function keydown(evt) {
+    if (!evt) evt = event
+
+    if (evt.ctrlKey && evt.key === 'k') {
+      // alert('CTRL + K')
+      webinput.focus()
+      return false
+    }
+  }
+
   chrome.storage.local.get(['blocked', 'enabled'], function (local) {
     const { blocked, enabled } = local
     if (!Array.isArray(blocked)) {
