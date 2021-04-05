@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SiteBlock</title>
+	<link rel="preload" href="/assets/font/Inter-roman.var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/assets/font/inter.css" />
+	<link rel="stylesheet" href="./assets/skeleton.css">
+	<link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<style>
+	.app {
+		padding: 2em 1em 1em 1em;
+	}
+
+	body {
+		background-color: #222;
+		color: #fff;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+
+	button {
+		background-color: #4b87ee;
+		color: #fff;
+		border: none;
+		font-size: 0.5em;
+		font-size: 1em;
+		padding: 1em 2em;
+		line-height: 0;
+		font-weight: 500;
+		margin-bottom: 2em;
+	}
+
+	button:hover,
+	button:focus {
+		background-color: #3968b9;
+		color: #fff;
+	}
+
+	img {
+		width: 2em;
+		margin-right: 0.5em;
+	}
+
+	.woo-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	a,
+	a:hover {
+		border: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #fff;
+	}
+
+	.by {
+		opacity: 75%;
+		font-size: 0.65em;
+		margin-top: -0.5em;
+	}
+</style>
+
+<body>
+	<div class="app">
+		<button id="blockbtn">Block this site</button>
+
+		<br>
+
+		<div class="woo-center">
+			<a href="https://arhaanb.co/gh/blocksite" target="_blank">
+				<img src="./assets/logo.svg" alt="">
+				<div>
+					<p>BlockSite</p>
+					<p class="by">by Arhaan</p>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<script src="./popup.js"></script>
+</body>
+
+</html>

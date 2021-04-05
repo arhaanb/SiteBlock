@@ -9,5 +9,10 @@
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "browser_action": {
+    "default_icon": "./assets/icon.png",
+    "default_popup": "popup.html",
+    "default_title": "BlockSite"
   }
 }
