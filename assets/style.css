@@ -41,7 +41,7 @@ input, textarea {
 }
 
 button, input, textarea, select, option {
-	font-family: Inter, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: 'Manrope', HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .btn-flex {
