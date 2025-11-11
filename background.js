@@ -29,12 +29,8 @@ function convertURL(site) {
   }
 }
 
-function myFunction(item, index) {
-  document.getElementById('demo').innerHTML += index + ':' + item + '<br>'
-}
-
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
-  const url = changeInfo.pendingUrl || changeInfo.url
+chrome.webNavigation.onCommitted.addListener(function (details) {
+  const url = details.url
   if (!url || !url.startsWith('http')) {
     return
   }
@@ -45,22 +41,19 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
   chrome.storage.local.get(['blocked', 'enabled'], function (local) {
     const { blocked, enabled } = local
 
-    if (blocked !== []) {
+    if (blocked && Array.isArray(blocked) && blocked.length > 0) {
       blocked.forEach((site) => {
-        // if (hostname.includes(site)) {
-        //   chrome.tabs.remove(tabId)
-        // }
         if (site.slice(0, 2) == '*.') {
           if (site.slice(2) == host) {
-            chrome.tabs.remove(tabId)
+            chrome.tabs.remove(details.tabId)
           } else if (
             site.slice(1) == host.slice(parseInt(`-${site.slice(1).length}`))
           ) {
-            chrome.tabs.remove(tabId)
+            chrome.tabs.remove(details.tabId)
           }
         } else {
           if (host == site) {
-            chrome.tabs.remove(tabId)
+            chrome.tabs.remove(details.tabId)
           }
         }
       })
